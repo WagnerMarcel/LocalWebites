@@ -13,7 +13,10 @@ app.route('/api/edc/days')
   .get(function(req, res) {
     if(req.query.month != 0){
       var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-      res.status(200).send(data.days[req.query.month-1]);
+      var package = {
+        "month" : data.days[req.query.month-1]
+      }
+      res.status(200).send(JSON.stringify(package));
     }else{
       res.status(200).sendFile(__dirname + '/everyDayCalendar/edc_data.json');
     }
@@ -27,7 +30,10 @@ app.route('/api/edc/days')
 app.route('/api/edc/months')
     .get(function(req, res) {
         var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-        res.status(200).send(data.months);
+        var package = {
+          "months" : data.months
+        }
+        res.status(200).send(JSON.stringify(package));
     })
     .post(function(req, res) {
       var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
