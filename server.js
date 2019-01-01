@@ -14,7 +14,7 @@ app.get('/api/edc', function(req, res) {
 });
 
 app.get('/edc', function(req, res){
-  res.status(200).send('/everyDayCalendar/everyDayCalendar.index');
+  res.status(200).sendfile('/everyDayCalendar/everyDayCalendar.index');
 });
 
 app.listen(8080);
