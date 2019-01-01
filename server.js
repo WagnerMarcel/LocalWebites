@@ -5,6 +5,7 @@ var url = require('url');
 
 
 app = express();
+app.use(express['static'](__dirname));
 app.use(express.static('everyDayCalendar'))
 
 // Express route for incoming requests for a customer name
