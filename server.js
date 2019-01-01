@@ -11,7 +11,7 @@ app.use('/edc', express.static(__dirname + '/everyDayCalendar'))
 // Express route for every day Calendar
 app.route('/api/edc/:day')
   .get(function(req, res) {
-    res.status(200).send('Hello' + day);
+    res.status(200).send('Hello' + req.params.day);
   })
   .post(function(req, res) {
     storeJson('everyDayCalendar/edc_data.json', day);
