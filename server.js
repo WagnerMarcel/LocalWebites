@@ -20,7 +20,7 @@ app.route('/api/edc')
 
 var storeJson = function(path, month, day){
   var data = JSON.parse(fs.readFileSync(path).toString());
-  data.days.[month-1].[day-1] = 1;
+  data.days[month-1][day-1] = 1;
   fs.writeFile(path, JSON.stringify(data));
 }
 
