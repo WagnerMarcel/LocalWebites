@@ -21,11 +21,9 @@ app.route('/api/edc/days')
   })
   .post(function(req, res) {
     var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-    console.log(req.query);
     data.days[req.query.month-1][req.query.day-1] = 1;
     fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data), (err) => {
       if (err) throw err;
-      console.log('The file has been saved!');
     });
     res.status(200).send('ok');
   });
@@ -43,7 +41,6 @@ app.route('/api/edc/months')
       data.months[req.query.month-1] = 1;
       fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data), (err) => {
         if (err) throw err;
-        console.log('The file has been saved!');
       });
       res.status(200).send('ok');
     });
