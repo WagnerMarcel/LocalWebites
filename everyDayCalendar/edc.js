@@ -7,7 +7,7 @@ client.onreadystatechange = function() {
     myObj = JSON.parse(this.responseText);
     txt += "<table class='table'>"
     var i = 0;
-    txt += "<tr>""
+    txt += "<tr>"
     while(i < 32){
       if(i != 0){
         txt += "<td>" + i + "</td>";
