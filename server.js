@@ -13,4 +13,8 @@ app.get('/api/edc', function(req, res) {
   res.status(200).send("Working Bitch");
 });
 
+app.get('/edc', function(req, res){
+  res.status(200).send('/everyDayCalendar/everyDayCalendar.index');
+});
+
 app.listen(8080);
