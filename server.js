@@ -8,9 +8,13 @@ app = express();
 app.use(express['static'](__dirname));
 app.use('/edc', express.static(__dirname + '/everyDayCalendar'))
 
-// Express route for incoming requests for a customer name
-app.get('/api/edc', function(req, res) {
-  res.status(200).send("Working Bitch");
-});
+// Express route for every day Calendar
+app.route('/api/edc')
+  .get(function(req, res) {
+    res.status(200).sendfile('everyDayCalendar/edc_data.json');
+  })
+  .post(function(req, res) {
+    res.status(200).send('ok');
+  })
 
 app.listen(8080);
