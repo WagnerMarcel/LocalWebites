@@ -2,13 +2,13 @@ var http = require('http');
 var express = require('express');
 var fs = require('fs');
 var url = require('url');
-var bodyParser = require('body-parser');
+
 
 
 app = express();
 app.use(express['static'](__dirname));
 app.use('/edc', express.static(__dirname + '/everyDayCalendar'));
-app.use(bodyParser.json());
+
 
 // Express route for every day Calendar
 app.route('/api/edc/days')
@@ -25,8 +25,8 @@ app.route('/api/edc/days')
   })
   .post(function(req, res) {
     var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-    console.log(req.body);
-    //data.days[req.body.month-1][req.body.day-1] = 1;
+    console.log(req.query);
+    data.days[req.body.month-1][req.body.day-1] = 1;
     fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data));
   });
 
