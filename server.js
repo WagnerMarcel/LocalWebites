@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 app = express();
 app.use(express['static'](__dirname));
 app.use('/edc', express.static(__dirname + '/everyDayCalendar'));
-
+app.use(bodyParser.json());
 
 // Express route for every day Calendar
 app.route('/api/edc/days')
