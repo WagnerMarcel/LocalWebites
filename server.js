@@ -17,7 +17,7 @@ app.route('/api/edc/days')
     var package = {
       "month" : data.days[req.query.month-1]
     }
-    res.status(200).send(JSON.stringify(package));
+    res.status(200).send(JSON.stringify(package)+'\n');
   })
   .post(function(req, res) {
     var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
@@ -35,7 +35,7 @@ app.route('/api/edc/months')
         var package = {
           "months" : data.months
         }
-        res.status(200).send(JSON.stringify(package));
+        res.status(200).send(JSON.stringify(package)+'\n');
     })
     .post(function(req, res) {
       var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
