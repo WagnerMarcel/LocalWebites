@@ -2,12 +2,12 @@ var http = require('http');
 var express = require('express');
 var fs = require('fs');
 var url = require('url');
+var bodyParser = require('body-parser');
 
 
 app = express();
 app.use(express['static'](__dirname));
 app.use('/edc', express.static(__dirname + '/everyDayCalendar'));
-app.use(express.bodyParser());
 
 
 // Express route for every day Calendar
