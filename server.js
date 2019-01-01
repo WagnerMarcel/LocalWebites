@@ -11,7 +11,7 @@ app.use('/edc', express.static(__dirname + '/everyDayCalendar'))
 // Express route for every day Calendar
 app.route('/api/edc/days')
   .get(function(req, res) {
-    if(req.query.month != NULL){
+    if(req.query.month != 0){
       var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
       var package = {
         "month" : data.days[req.query.month-1]
