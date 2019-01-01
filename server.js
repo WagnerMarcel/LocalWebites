@@ -6,7 +6,7 @@ var url = require('url');
 
 app = express();
 app.use(express['static'](__dirname));
-app.use(express.static('public'))
+app.use(express.static('everyDayCalender'))
 
 // Express route for incoming requests for a customer name
 app.get('/api/edc', function(req, res) {
