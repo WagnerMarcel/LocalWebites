@@ -11,13 +11,14 @@ client.onreadystatechange = function() {
     while(i < 32){
       if(i != 0){
         txt += "<td>" + i + "</td>";
+      }else {
+        txt += "<td></td>";
       }
       i++;
     }
     txt += "</tr>"
     for (x in myObj.days) {
-      var val = x+1;
-      txt += "<tr><td>" + val + "</td>";
+      txt += "<tr><td>" + parseInt(x+1) + "</td>";
       for (y in myObj.days[x]){
         txt += "<td>" + myObj.days[x][y] + "</td>";
       }
