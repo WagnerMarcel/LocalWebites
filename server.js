@@ -9,19 +9,31 @@ app.use(express['static'](__dirname));
 app.use('/edc', express.static(__dirname + '/everyDayCalendar'))
 
 // Express route for every day Calendar
-app.route('/api/edc')
+app.route('/api/edc/days')
   .get(function(req, res) {
-    res.status(200).sendFile(__dirname + '/everyDayCalendar/edc_data.json');
+    if(req.query.month != 0){
+      var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
+      res.status(200).send(data.days[req.query.month-1]);
+    }else{
+      res.status(200).sendFile(__dirname + '/everyDayCalendar/edc_data.json');
+    }
   })
   .post(function(req, res) {
-    storeJson(__dirname + '/everyDayCalendar/edc_data.json', req.query.month, req.query.day);
-    res.status(200).send('ok');
-  })
+    var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
+    data.days[req.query.month-1][req.query.day-1] = 1;
+    fs.writeFile(path, JSON.stringify(data));
+  });
 
-var storeJson = function(path, month, day){
-  var data = JSON.parse(fs.readFileSync(path).toString());
-  data.days[month-1][day-1] = 1;
-  fs.writeFile(path, JSON.stringify(data));
-}
+app.route('/api/edc/month')
+    .get(function(req, res) {
+        var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
+        res.status(200).send(data.months);
+    })
+    .post(function(req, res) {
+      var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
+      data.months[req.query.month-1] = 1;
+      fs.writeFile(path, JSON.stringify(data));
+    });
+
 
 app.listen(8080);
