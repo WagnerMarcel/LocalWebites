@@ -18,7 +18,8 @@ client.onreadystatechange = function() {
     }
     txt += "</tr>"
     for (x in myObj.days) {
-      txt += "<tr><td>" + parseInt(x+1) + "</td>";
+      var val = parseInt(x)+1;
+      txt += "<tr><td>" + val + "</td>";
       for (y in myObj.days[x]){
         txt += "<td>" + myObj.days[x][y] + "</td>";
       }
