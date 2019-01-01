@@ -7,7 +7,7 @@ client.onreadystatechange = function() {
     myObj = JSON.parse(this.responseText);
     txt += "<table class='table'>"
     for (x in myObj.days) {
-      txt += "<tr><td>" + x+1 + "</td>";
+      txt += "<tr><td>" + (x+1) + "</td>";
       for (y in myObj.days[x]){
         txt += "<td>" + myObj.days[x][y] + "</td>";
       }
