@@ -1,6 +1,16 @@
-var app = require('http').createServer(createServer);
+var http = require('http')
+var express = require('express');
 var fs = require('fs');
 var url = require('url');
+
+
+app = express().createServer(createServer);;
+app.use(express['static'](__dirname ))
+
+// Express route for incoming requests for a customer name
+app.get('/api/edc', function(req, res) {
+  res.status(200).send("Working Bitch");
+});
 
 function createServer(req, res) {
     var path = url.parse(req.url).pathname;
