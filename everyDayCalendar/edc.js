@@ -12,6 +12,7 @@ client.onreadystatechange = function() {
       if(i != 0){
         txt += "<td>" + i + "</td>";
       }
+      i++;
     }
     txt += "</tr>"
     for (x in myObj.days) {
