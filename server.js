@@ -28,6 +28,7 @@ app.route('/api/edc/days')
       if (err) throw err;
       console.log('The file has been saved!');
     });
+    res.status(200);
   });
 
 app.route('/api/edc/months')
@@ -41,8 +42,9 @@ app.route('/api/edc/months')
     })
     .post(function(req, res) {
       var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-      data.months[req.body.month-1] = 1;
+      data.months[req.query.month-1] = 1;
       fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data));
+      res.status(200);
     });
 
 
