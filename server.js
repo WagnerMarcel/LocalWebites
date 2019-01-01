@@ -13,21 +13,20 @@ app.use('/edc', express.static(__dirname + '/everyDayCalendar'));
 // Express route for every day Calendar
 app.route('/api/edc/days')
   .get(function(req, res) {
-    if(req.query.month != 0){
-      var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-      var package = {
-        "month" : data.days[req.query.month-1]
-      }
-      res.status(200).send(JSON.stringify(package));
-    }else{
-      res.status(200).sendFile(__dirname + '/everyDayCalendar/edc_data.json');
+    var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
+    var package = {
+      "month" : data.days[req.query.month-1]
     }
+    res.status(200).send(JSON.stringify(package));
   })
   .post(function(req, res) {
     var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
     console.log(req.query);
     data.days[req.query.month-1][req.query.day-1] = 1;
-    fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data));
+    fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data), (err) => {
+      if (err) throw err;
+      console.log('The file has been saved!');
+    });
   });
 
 app.route('/api/edc/months')
