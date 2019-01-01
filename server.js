@@ -6,7 +6,9 @@ var url = require('url');
 
 app = express();
 app.use(express['static'](__dirname));
-app.use('/edc', express.static(__dirname + '/everyDayCalendar'))
+app.use('/edc', express.static(__dirname + '/everyDayCalendar'));
+app.use(express.bodyParser());
+
 
 // Express route for every day Calendar
 app.route('/api/edc/days')
@@ -23,7 +25,7 @@ app.route('/api/edc/days')
   })
   .post(function(req, res) {
     var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-    data.days[req.query.month-1][req.query.day-1] = 1;
+    data.days[req.body.month-1][req.body.day-1] = 1;
     fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data));
   });
 
@@ -37,7 +39,7 @@ app.route('/api/edc/months')
     })
     .post(function(req, res) {
       var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-      data.months[req.query.month-1] = 1;
+      data.months[req.body.month-1] = 1;
       fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data));
     });
 
