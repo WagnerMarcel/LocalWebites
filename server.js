@@ -25,7 +25,8 @@ app.route('/api/edc/days')
   })
   .post(function(req, res) {
     var data = JSON.parse(fs.readFileSync(__dirname + '/everyDayCalendar/edc_data.json').toString());
-    data.days[req.body.month-1][req.body.day-1] = 1;
+    console.log(req.body);
+    //data.days[req.body.month-1][req.body.day-1] = 1;
     fs.writeFile(__dirname + '/everyDayCalendar/edc_data.json', JSON.stringify(data));
   });
 
