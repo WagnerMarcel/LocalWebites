@@ -14,7 +14,7 @@ function createServer(req, res) {
 
     switch(path) {
         case '/edc':
-            doc = fs.readFile(__dirname + '/everyDayCalendar.html', fsCallback);
+            doc = fs.readFile(__dirname + '/everyDayCalender/everyDayCalendar.html', fsCallback);
         break;
         default:
             doc = fs.readFile(__dirname + '/index.html', fsCallback);
