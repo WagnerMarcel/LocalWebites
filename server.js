@@ -1,10 +1,10 @@
-var http = require('http')
+var http = require('http').createServer(createServer);
 var express = require('express');
 var fs = require('fs');
 var url = require('url');
 
 
-app = express().createServer(createServer);;
+app = express();
 app.use(express['static'](__dirname ))
 
 // Express route for incoming requests for a customer name
