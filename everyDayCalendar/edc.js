@@ -21,7 +21,12 @@ client.onreadystatechange = function() {
       var val = parseInt(x)+1;
       txt += "<tr><td>" + val + "</td>";
       for (y in myObj.days[x]){
-        txt += "<td>" + myObj.days[x][y] + "</td>";
+        if(myObj.days[x][y] == 0){
+          txt += "<td bgcolor='#ff8888'>" + myObj.days[x][y] + "</td>";
+        }else{
+          txt += "<td bgcolor='#88ff88'>" + myObj.days[x][y] + "</td>";
+        }
+
       }
       txt += "</tr>";
     }
