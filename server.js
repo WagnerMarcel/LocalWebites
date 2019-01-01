@@ -11,10 +11,10 @@ app.use('/edc', express.static(__dirname + '/everyDayCalendar'))
 // Express route for every day Calendar
 app.route('/api/edc')
   .get(function(req, res) {
-    res.status(200).sendFile('everyDayCalendar/edc_data.json');
+    res.status(200).sendFile(__dirname + '/everyDayCalendar/edc_data.json');
   })
   .post(function(req, res) {
-    storeJson('everyDayCalendar/edc_data.json', req.query.month, req.query.day);
+    storeJson(__dirname + '/everyDayCalendar/edc_data.json', req.query.month, req.query.day);
     res.status(200).send('ok');
   })
 
