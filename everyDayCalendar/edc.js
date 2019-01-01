@@ -1,5 +1,5 @@
 var client = new XMLHttpRequest();
-client.open('GET', '/edc_data.json');
+client.open('GET', '/everyDayCalendar/edc_data.json');
 client.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     myObj = JSON.parse(this.responseText);
