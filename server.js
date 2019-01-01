@@ -1,4 +1,4 @@
-var http = require('http').createServer(createServer);
+var http = require('http');
 var express = require('express');
 var fs = require('fs');
 var url = require('url');
