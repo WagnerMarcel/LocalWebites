@@ -1,47 +1,55 @@
 var client = new XMLHttpRequest();
-var txt = "";
+var table = "";
+var bar = "";
 var myObj = "";
-
+var progMonths;
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez"];
 
 client.open('GET', '/everyDayCalendar/edc_data.json');
 client.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     myObj = JSON.parse(this.responseText);
-    txt += "<table class='table'>"
+    table += "<table class='table'>"
     var i = 0;
-    txt += "<tr>"
+    table += "<tr>"
     while(i < 33){
       if(i == 0){
-        txt += "<td></td>";
+        table += "<td></td>";
       }else if(i == 32){
-        txt += "<td>Progress</td>";
+        table += "<td>Progress</td>";
       }else {
-        txt += "<td>" + i + "</td>";
+        table += "<td>" + i + "</td>";
       }
       i++;
     }
-    txt += "</tr>"
+    table += "</tr>"
     for (x in myObj.days) {
-      txt += "<tr><td>" + months[parseInt(x)] + "</td>";
+      table += "<tr><td>" + months[parseInt(x)] + "</td>";
       i = 0;
       for (y in myObj.days[x]){
         if(myObj.days[x][y] == 0){
-          txt += "<td bgcolor='#ff8888'></td>";
+          table += "<td bgcolor='#ff8888'></td>";
         }else{
-          txt += "<td bgcolor='#88ff88'></td>";
+          table += "<td bgcolor='#88ff88'></td>";
         }
         i++;
       }
       while(i < 31){
-        txt += "<td></td>";
+        table += "<td></td>";
         i++
       }
-      txt += "<td>" + progress(myObj.days[x]) + "</td>";
-      txt += "</tr>";
+      table += "<td>" + progress(myObj.days[x]) + "</td>";
+      table += "</tr>";
     }
-    txt += "</table>"
-    document.getElementById("demo").innerHTML = txt;
+    table += "</table>"
+    var progYear = 0;
+    for(x in progMonths){
+      progYear += progMonths;
+    }
+    progYear = progYear/12;
+    bar += "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%'>";
+    document.getElementById("demo").innerHTML = table;
+    document.getElementById("bar").innerHTML = bar;
   }
 }
 client.send();
@@ -52,5 +60,6 @@ function progress(array){
     prog += array[x];
   }
   var prog = prog*100/array.length;
+  progMonths.push(prog);
   return prog;
 }
