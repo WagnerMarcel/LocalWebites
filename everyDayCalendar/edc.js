@@ -46,10 +46,8 @@ client.onreadystatechange = function() {
     for(x in progMonths){
       progYear += parseFloat(progMonths[x]);
     }
-    console.log(progYear);
     progYear = progYear/12.0;
-    console.log(progYear);
-    bar += "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%'>";
+    bar += "<div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%'>" + progYear + "%</div>";
     document.getElementById("demo").innerHTML = table;
     document.getElementById("bar").innerHTML = bar;
   }
