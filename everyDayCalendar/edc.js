@@ -1,6 +1,9 @@
 var client = new XMLHttpRequest();
 var txt = "";
 var myObj = "";
+
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez"];
+
 client.open('GET', '/everyDayCalendar/edc_data.json');
 client.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -18,13 +21,12 @@ client.onreadystatechange = function() {
     }
     txt += "</tr>"
     for (x in myObj.days) {
-      var val = parseInt(x)+1;
-      txt += "<tr><td>" + val + "</td>";
+      txt += "<tr><td>" + months[parseInt(x)] + "</td>";
       for (y in myObj.days[x]){
         if(myObj.days[x][y] == 0){
-          txt += "<td bgcolor='#ff8888'>" + myObj.days[x][y] + "</td>";
+          txt += "<td bgcolor='#ff8888'></td>";
         }else{
-          txt += "<td bgcolor='#88ff88'>" + myObj.days[x][y] + "</td>";
+          txt += "<td bgcolor='#88ff88'></td>";
         }
 
       }
