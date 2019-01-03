@@ -38,7 +38,8 @@ client.onreadystatechange = function() {
         table += "<td></td>";
         i++
       }
-      table += "<td>" + progress(myObj.days[x]) + "</td>";
+      progress(myObj.days[x])
+      table += "<div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + progMonths[x] + "aria-valuemin='0' aria-valuemax='100' style='width:" + progMonths[x] + "%'>" + progMonths[x] + "%</div></div>";
       table += "</tr>";
     }
     table += "</table>"
