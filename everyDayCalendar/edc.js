@@ -11,23 +11,31 @@ client.onreadystatechange = function() {
     txt += "<table class='table'>"
     var i = 0;
     txt += "<tr>"
-    while(i < 32){
-      if(i != 0){
-        txt += "<td>" + i + "</td>";
-      }else {
+    while(i < 33){
+      if(i == 0){
         txt += "<td></td>";
+      }else if(i = 32){
+        txt += "<td>"Progress"</td>";
+      }else {
+        txt += "<td>" + i + "</td>";
       }
       i++;
     }
     txt += "</tr>"
     for (x in myObj.days) {
       txt += "<tr><td>" + months[parseInt(x)] + "</td>";
+      i = 0;
       for (y in myObj.days[x]){
         if(myObj.days[x][y] == 0){
           txt += "<td bgcolor='#ff8888'></td>";
         }else{
           txt += "<td bgcolor='#88ff88'></td>";
         }
+        i++;
+      }
+      while(i < 31){
+        txt += "<td></td>";
+        i++
       }
       txt += "<td>" + progress(myObj.days[x]) + "</td>";
       txt += "</tr>";
