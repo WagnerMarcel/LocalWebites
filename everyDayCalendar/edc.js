@@ -47,6 +47,7 @@ client.onreadystatechange = function() {
       progYear += progMonths;
     }
     progYear = progYear/12;
+    console.log(progYear);
     bar += "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%'>";
     document.getElementById("demo").innerHTML = table;
     document.getElementById("bar").innerHTML = bar;
