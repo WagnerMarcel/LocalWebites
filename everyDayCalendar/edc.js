@@ -43,7 +43,6 @@ function progress(array){
   for(x in array){
     prog += array[x];
   }
-  var prog *= 100;
-  var prog /= array.length;
+  var prog = prog*100/array.length;
   return prog;
 }
