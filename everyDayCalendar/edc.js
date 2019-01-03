@@ -15,7 +15,7 @@ client.onreadystatechange = function() {
       if(i == 0){
         txt += "<td></td>";
       }else if(i = 32){
-        txt += "<td>"Progress"</td>";
+        txt += "<td>Progress</td>";
       }else {
         txt += "<td>" + i + "</td>";
       }
