@@ -2,7 +2,7 @@ var client = new XMLHttpRequest();
 var table = "";
 var bar = "";
 var myObj = "";
-var progMonths;
+var progMonths = [];
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez"];
 
 client.open('GET', '/everyDayCalendar/edc_data.json');
