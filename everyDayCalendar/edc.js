@@ -42,9 +42,9 @@ client.onreadystatechange = function() {
       table += "</tr>";
     }
     table += "</table>"
-    var progYear = 0;
+    var progYear = 0.0;
     for(x in progMonths){
-      progYear += parseInt(progMonths);
+      progYear += parseFloat(progMonths);
     }
     progYear = progYear/12;
     console.log(progYear);
