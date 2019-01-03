@@ -28,8 +28,8 @@ client.onreadystatechange = function() {
         }else{
           txt += "<td bgcolor='#88ff88'></td>";
         }
-
       }
+      txt += "<td>" + progress(myObj.days[x]) + "</td>";
       txt += "</tr>";
     }
     txt += "</table>"
@@ -37,3 +37,13 @@ client.onreadystatechange = function() {
   }
 }
 client.send();
+
+var progress = function(var array[]){
+  var prog = 0;
+  for(x in array){
+    prog += array[x];
+  }
+  var prog *= 100;
+  var prog /= array.length;
+  return prog;
+}
