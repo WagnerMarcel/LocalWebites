@@ -38,7 +38,7 @@ client.onreadystatechange = function() {
         table += "<td></td>";
         i++
       }
-      var val = parseFloat(progress(myObj.days[x]));
+      var val = parseFloat(progress(myObj.days[x])).toFixed(2);
       table += "<td><div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + val + "aria-valuemin='0' aria-valuemax='100' style='width:" + val + "%'>" + val + "%</div></div></td>";
       table += "</tr>";
     }
@@ -48,6 +48,7 @@ client.onreadystatechange = function() {
       progYear += parseFloat(progMonths[x]);
     }
     progYear = progYear/12.0;
+    progYear = progYear.toFixed(2);
     bar += "<div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%'>" + progYear + "%</div>";
     document.getElementById("demo").innerHTML = table;
     document.getElementById("bar").innerHTML = bar;
