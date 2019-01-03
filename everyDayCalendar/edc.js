@@ -44,9 +44,10 @@ client.onreadystatechange = function() {
     table += "</table>"
     var progYear = 0.0;
     for(x in progMonths){
-      progYear += parseFloat(progMonths);
+      progYear += parseFloat(progMonths[x]);
     }
-    progYear = progYear/12;
+    console.log(progYear);
+    progYear = progYear/12.0;
     console.log(progYear);
     bar += "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%'>";
     document.getElementById("demo").innerHTML = table;
