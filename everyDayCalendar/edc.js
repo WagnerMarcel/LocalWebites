@@ -38,7 +38,7 @@ client.onreadystatechange = function() {
 }
 client.send();
 
-function progress(var array[]){
+function progress(array){
   var prog = 0;
   for(x in array){
     prog += array[x];
