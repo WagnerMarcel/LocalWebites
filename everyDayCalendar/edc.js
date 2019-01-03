@@ -38,8 +38,8 @@ client.onreadystatechange = function() {
         table += "<td></td>";
         i++
       }
-      progress(myObj.days[x])
-      table += "<td><div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + parseFloat(progMonths[x]) + "aria-valuemin='0' aria-valuemax='100' style='width:" + parseFloat(progMonths[x]) + "%'>" + parseFloat(progMonths[x]) + "%</div></div></td>";
+      var val = parseFloat(progress(myObj.days[x]));
+      table += "<td><div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + val + "aria-valuemin='0' aria-valuemax='100' style='width:" + val + "%'>" + val + "%</div></div></td>";
       table += "</tr>";
     }
     table += "</table>"
