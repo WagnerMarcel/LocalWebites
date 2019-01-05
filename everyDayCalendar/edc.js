@@ -71,7 +71,7 @@ function total(array){
   return total;
 }
 
-function currentDay(){
+function currentDay(array){
   var today = new Date();
   var day = today.getDate();
   var month = today.getMonth() + 1;
