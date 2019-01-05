@@ -107,7 +107,7 @@ function daysMissed(array){
       k++;
     }
   }
-  return missed();
+  return missed;
 }
 
 function progress(array){
