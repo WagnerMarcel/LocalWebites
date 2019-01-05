@@ -92,7 +92,7 @@ function daysMissed(array){
 
   while(i < month){
     for(j in array.days[i-1]){
-      if(array.days[i][j] == 0){
+      if(array.days[i-1][j] == 0){
         missed += 1;
       }
     }
@@ -101,7 +101,7 @@ function daysMissed(array){
   var k = 0;
   if(i == month){
     while(k < day-1){
-      if(array.days[i][k] == 0){
+      if(array.days[i-1][k] == 0){
         missed += 1;
       }
       k++;
