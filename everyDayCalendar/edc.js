@@ -83,7 +83,6 @@ function currentDay(array){
   }
 }
 
-
 function daysMissed(array){
   var missed = 0;
   var today = new Date();
@@ -102,7 +101,7 @@ function daysMissed(array){
   var k = 0;
   if(i == month){
     while(k < day-1){
-      if(array.days[i][j] == 0){
+      if(array.days[i][k] == 0){
         missed += 1;
       }
       k++;
