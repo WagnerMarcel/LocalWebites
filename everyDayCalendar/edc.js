@@ -1,6 +1,7 @@
 var client = new XMLHttpRequest();
 var table = "";
 var bar = "";
+var basic = "";
 var myObj = "";
 var progMonths = [];
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez"];
@@ -50,11 +51,65 @@ client.onreadystatechange = function() {
     progYear = progYear/12.0;
     progYear = progYear.toFixed(2);
     bar += "<div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%; color: gray;'>" + progYear + "%</div>";
+    basic += "Progres so far: " + total(myObj) + "/365 Days completed\n";
+    basic += "Current Day completed: " + currentDay(myObj) + "\n";
+    basic += "Days missed so far: " + daysMissed(myObj);
     document.getElementById("demo").innerHTML = table;
     document.getElementById("bar").innerHTML = bar;
+    document.getElementById("basic").innerHTML = basic;
   }
 }
 client.send();
+
+function total(array){
+  var total = 0;
+  for(x in array.days){
+    for(y in array.days[x]){
+      total += array.days[x][y];
+    }
+  }
+  return total;
+}
+
+function currentDay(){
+  var today = new Date();
+  var day = today.getDate();
+  var month = today.getMonth() + 1;
+
+  if(array.days[month-1][day]){
+    return "Yes!"
+  }else{
+    return "No!"
+  }
+}
+
+
+function daysMissed(array){
+  var missed = 0;
+  var today = new Date();
+  var day = today.getDate();
+  var month = today.getMonth() + 1;
+  var i = 0;
+
+  while(i < month){
+    for(j in array.days[i-1]){
+      if(array.days[i][j] == 0){
+        missed += 1;
+      }
+    }
+    i++;
+  }
+  var k = 0;
+  if(i == month){
+    while(k < day-1){
+      if(array.days[i][j] == 0){
+        missed += 1;
+      }
+      k++;
+    }
+  }
+  return missed();
+}
 
 function progress(array){
   var prog = 0;
