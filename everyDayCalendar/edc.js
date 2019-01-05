@@ -51,8 +51,8 @@ client.onreadystatechange = function() {
     progYear = progYear/12.0;
     progYear = progYear.toFixed(2);
     bar += "<div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow=" + progYear + "aria-valuemin='0' aria-valuemax='100' style='width:" + progYear + "%; color: gray;'>" + progYear + "%</div>";
-    basic += "Progres so far: " + total(myObj) + "/365 Days completed\n";
-    basic += "Current Day completed: " + currentDay(myObj) + "\n";
+    basic += "Progres so far: " + total(myObj) + "/365 Days completed <br>";
+    basic += "Current Day completed: " + currentDay(myObj) + "<br>";
     basic += "Days missed so far: " + daysMissed(myObj);
     document.getElementById("demo").innerHTML = table;
     document.getElementById("bar").innerHTML = bar;
